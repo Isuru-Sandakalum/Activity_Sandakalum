@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <!-- in here developer have externally connected css file, because after scss transorming into css file it will directly affect here -->
+    <Link href="Test.css" rel="stylesheet">
+    </Link>
+    <!-- jquery for handle some functionalities -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- fontAwsome CDN -->
+    <script src="https://kit.fontawesome.com/9d8f9d64aa.js" crossorigin="anonymous"></script>
+
+<body>
+
+    <!-- button which use to open the pop-up window -->
+    <button class="open-btn" onclick="openView()">Open Model</button>
+
+    <!-- Popup window -->
+    <div class="popUp" id="popUp">
+        <div class="popUpWindow"></div>
+        <div class="content">
+            <button class="close-btn" onclick="openView()">&times;</button>
+            <div class="divHeader">
+                <h6>New Job</h6>
+            </div>
+
+
+            <div class="slider-container">
+                <div class="slider">
+                    <!-- First slider whcih have the table data -->
+                    <div class="slide active">
+                        <!-- form for the data and search element -->
+                        <form class="form-control">
+                            <label class="headerLable">Select client</label>
+                            <br>
+
+                            <div class="searchContainer">
+                                <input class="searchBar" id="searchInput" type="text" name="search"
+                                    placeholder="Search..">
+                                <span class="closeBtn">&#x2715;</span>
+                                <span class="searchIcon"><i class="fas fa-search"></i></span>
+
+                            </div>
+
+                            <div class="dataDiv">
+                                <table class="dataTable">
+                                    <tr class="headingTr">
+                                        <th> </th>
+                                        <th>Organization</th>
+                                        <th>Code</th>
+                                        <th>Handler</th>
+                                    </tr>
+                                    <tbody id="dataTable">
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div class="pagination">
+                                <div class="paginationContainer">
+                                    <p id="dataRange"></p>
+                                    <a onclick="prevPage()">&laquo;</a>
+                                    <a onclick="nextPage()"> &raquo;</a>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- second slider which contains  -->
+                    <div class="slide">
+                        <form class="dropForm">
+                            <label class="headerLabel">Use a Template?</label>
+                            <br>
+                            <select id="dropdown" class="dropDown">
+                                <option value="Select a Template">Select a Template</option>
+                                <option value="template1">Template 1</option>
+                            </select>
+                        </form>
+
+                        <!-- Contents of the Template 1 -->
+                        <form class="dropForm">
+                            <div class="dropContent">
+                                <div id="contentTemp" class="data">
+                                    <!-- View drop down -->
+                                    <select id="dropdown2" class="dropdown2">
+                                        <option value="Select a Template">Select a View</option>
+                                        <option value="view1">View 1</option>
+                                    </select>
+                                    <br>
+                                    <div class="mainCheck">
+                                        <!-- container 1 -->
+                                        <div>
+                                            <h6 style="opacity: 50%;"> copy </h6>
+                                            <div class="checkBoxDiv">
+
+                                                <input type="checkbox" id="dates" name="dates" value="dates">
+                                                <label for="dates"> Dates </label>
+                                                <br>
+                                                <input type="checkbox" id="Status" name="Status" value="Status">
+                                                <label for="Status"> Status </label>
+                                                <br>
+                                                <input type="checkbox" id="Bill" name="Bill" value="Bill">
+                                                <label for="Bill"> Billing Plans </label>
+                                                <br>
+                                                <input type="checkbox" id="act" name="act" value="act">
+                                                <label for="act"> Activites </label>
+                                                <br>
+                                                <input type="checkbox" id="phase" name="phase" value="phase">
+                                                <label for="phase"> Phase Quotes </label>
+                                                <br>
+                                                <input type="checkbox" id="stages" name="stages" value="stages">
+                                                <label for="stages"> Stages </label>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <!-- container 2 -->
+                                        <div>
+                                            <h6 style="opacity: 50%;"> Include Estimates </h6>
+                                            <div class="checkBoxDiv">
+
+                                                <input type="checkbox" id="time" name="time" value="time">
+                                                <label for="time"> Time </label>
+                                                <br>
+                                                <input type="checkbox" id="material" name="material" value="material">
+                                                <label for="material"> Material </label>
+                                                <br>
+                                                <input type="checkbox" id="purchase" name="purchase" value="purchase">
+                                                <label for="purchase"> Purchase </label>
+                                                <br>
+                                                <input type="checkbox" id="uav" name="uav" value="uav">
+                                                <label for="uav"> Use Actual Values </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phase to copy part -->
+                                    <h6 style="opacity: 50%;">Phases to copy</h6>
+                                    <div class="copyPhase">
+                                        <table class="phaseTable">
+                                            <tr class="phaseHeading">
+                                                <th></th>
+                                                <th>Phase</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr class="pahseDetails1">
+                                                <td><input type="checkbox"></td>
+                                                <td>001</td>
+                                                <td>Phase Description</td>
+                                            </tr>
+                                            <tr class="pahseDetails2">
+                                                <td><input type="checkbox"></td>
+                                                <td>002</td>
+                                                <td>Phase Description</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+
+
+                    <!-- third slider which contains -->
+                    <div class="slide">
+                        <form class="dropForm">
+                            <label class="headerLabel">Extra Options</label>
+                            <br>
+                            <div class="jobDiv">
+                                <input type="checkbox" id="jobNum" name="jobNum" value="jobNum">
+                                <label for="jobNum" class="jobNum"> Own Job Number </label>
+                            </div>
+                            <h6 class="handlerHead">Handler</h6>
+                            <div class="handlerDiv">
+                                <div class="option1">
+                                    <input type="radio" id="Cdf" name="options" value="option1">
+                                    <label for="option1">Client default handler</label>
+                                </div>
+
+                                <div class="option2">
+                                    <input type="radio" id="Cu" name="options" value="option2">
+                                    <label for="option2">Current User</label>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <!-- Dots -->
+                <div class="latterPart">
+                    <div class="dots-container">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+
+                    </div>
+                    <button class="nextBtn" id="nextBtn" onclick="nextSlide()">Next</button>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div>
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+</body>
+
+
+
+
+
+
+<!-- JAVASCRIPT PART -->
+<script>
+    //Function for open pop-up window
+    function openView() {
+        document.getElementById("popUp").classList.toggle("active");
+    }
+
+    //create dynamic data objectives inside an array
+    var myArray = [
+        { 'organization': 'Bank of America', 'Code': 'SFAW', 'Handler': 'Savannah Nguyen' },
+        { 'organization': 'Google', 'Code': 'GSLK', 'Handler': 'Micheal Johnson' },
+        { 'organization': 'Apple Inc.', 'Code': 'APLQ', 'Handler': 'Emily Roberts' },
+        { 'organization': 'Microsoft', 'Code': 'MSFT', 'Handler': 'David Thompson' },
+        { 'organization': 'Amazon', 'Code': 'AMZN', 'Handler': 'Jessica Anderson' },
+        { 'organization': 'Facebook', 'Code': 'FBKL', 'Handler': 'Christopher Davis' },
+        { 'organization': 'Tesla', 'Code': 'TSLA', 'Handler': 'Olivia Wilson' },
+        { 'organization': 'Netflix', 'Code': 'NFLX', 'Handler': 'William Martinez' },
+        { 'organization': 'IBM', 'Code': 'IBMQ', 'Handler': 'Sophia Lee' },
+        { 'organization': 'Intel', 'Code': 'INTC', 'Handler': 'Daniel Hernandez' },
+        { 'organization': 'NVIDIA', 'Code': 'NVDA', 'Handler': 'Matthew Johnson' },
+        { 'organization': 'Adobe', 'Code': 'ADBE', 'Handler': 'John Lee' },
+        { 'organization': 'Twitter', 'Code': 'TWTR', 'Handler': 'Gabriel Ramirez' },
+        { 'organization': 'Toyota Motor Corporation', 'Code': 'TM', 'Handler': 'Carlos Hernandez' },
+        { 'organization': 'Alphabet Inc.', 'Code': 'GOOGL', 'Handler': 'Mohammed Khan' }
+    ]
+
+
+    //check the event handler for the search
+    $('#searchInput').on('keyup', function () {
+        var value = $(this).val().trim(); // Trim extra spaces
+
+        var data = searchTable(value, myArray);
+        buildTable(data);
+
+        // Reset pagination after clearing the search input
+        if (value === '') {
+            resetPagination();
+        }
+    });
+
+    // Reset pagination 
+    resetPagination();
+
+
+
+    //Search bar function
+    function searchTable(value, data) {
+        var filteredData = []
+        for (var i = 0; i < data.length; i++) {
+            value = value.toLowerCase()
+            var organization = data[i].organization.toLowerCase()
+
+            if (organization.includes(value)) {
+                filteredData.push(data[i])
+            }
+
+        }
+
+        return filteredData
+
+    }
+
+    //Search bar close btn
+    document.querySelector('.closeBtn').addEventListener('click', function () {
+        document.getElementById('searchInput').value = '';
+        // Hide the close button after clearing the input
+        this.style.display = 'none';
+        resetPagination();
+    });
+
+    // Function for manipulate the data (dynamically created objectives) into the table
+    function buildTable(data) {
+        var table = document.getElementById('dataTable')
+        table.innerHTML = ''
+        //Loop for put each data inside to the table
+        for (var i = 0; i < data.length; i++) {
+            var row = `<tr> <td><input type="checkbox"> </td>
+							<td>${data[i].organization}</td>
+							<td>${data[i].Code}</td>
+							<td>${data[i].Handler}</td>
+					  </tr>`
+            table.innerHTML += row
+
+
+        }
+    }
+
+
+    //PAGINATION SECTION
+    var currentPage = 1;
+    var rowsPerPage = 5;
+    var totalPages = Math.ceil(myArray.length / rowsPerPage);
+
+    // Function to display data for the current page
+    function displayCurrentPage() {
+        var startIndex = (currentPage - 1) * rowsPerPage;
+        var endIndex = startIndex + rowsPerPage;
+        var dataToDisplay = myArray.slice(startIndex, endIndex);
+        buildTable(dataToDisplay);
+
+        // Display data range
+        var dataCount = myArray.length;
+        var startData = startIndex + 1;
+        var endData = endIndex > dataCount ? dataCount : endIndex;
+        document.getElementById("dataRange").innerText = `${startData}-${endData} of ${dataCount}`;
+    }
+
+    // Function to next Page
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayCurrentPage();
+        }
+    }
+
+    // Function for preveoius page
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayCurrentPage();
+        }
+    }
+
+    //reset the pagination
+    buildTable(myArray)
+    function resetPagination() {
+        currentPage = 1;
+        displayCurrentPage();
+    }
+
+    //display the first page
+    displayCurrentPage();
+
+
+
+
+
+    //Slider Functions
+    let slideIndex = 1;
+    let nextButtonClicks = 0;
+
+    // Function to display a specific slide
+    function showSlide(n) {
+        const slides = document.getElementsByClassName('slide');
+        const dots = document.getElementsByClassName('dot');
+
+        if (n > slides.length) {
+            slideIndex = 1;
+        } else if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove('active');
+
+            if (i < slideIndex - 1) {
+                dots[i].classList.add('deactive-dot');
+            } else {
+                dots[i].classList.remove('deactive-dot');
+            }
+        }
+
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].classList.add('active-dot');
+    }
+
+    //show next slide
+    function nextSlide() {
+        const nextButton = document.getElementById('nextBtn');
+
+        if (nextButtonClicks < 2) {
+            nextButtonClicks++;
+            plusSlides(1);
+        } else {
+            const confirmation = confirm("Are you sure you want to proceed");
+            if (confirmation) {
+                nextButtonClicks = 0;
+                plusSlides(1);
+                nextButton.textContent = "Next"; // Reset button text to "Next"
+                openView();
+                location.reload();
+            }
+        }
+
+        // Change button text to "Create job" after 2 clicks
+        if (nextButtonClicks === 2) {
+            nextButton.textContent = "Create Job";
+        }
+    }
+
+    // Function to switch to the next slide
+    function plusSlides(n) {
+        showSlide(slideIndex += n);
+    }
+
+    // Function to set the current slide
+    function currentSlide(n) {
+        showSlide(slideIndex = n);
+    }
+
+    // Show the first slide by default
+    showSlide(slideIndex);
+
+    //DROPDOWN JS CODE
+    $(document).ready(function () {
+        $('#dropdown').on('change', function () {
+            var selectedValue = $(this).val();
+            if (selectedValue === 'template1') {
+                $('#contentTemp').css('display', 'block');
+            } else {
+                $('#contentTemp').css('display', 'none');
+            }
+        });
+    });
+
+    //checkbox true
+    $(document).ready(function () {
+        $('#dates').prop('checked', true);
+        $('#Status').prop('checked', true);
+        $('#Bill').prop('checked', true);
+        $('#act ').prop('checked', true);
+        $('#phase ').prop('checked', true);
+        $('#stages ').prop('checked', true);
+        $('#time  ').prop('checked', true);
+        $('#material  ').prop('checked', true);
+        $('#purchase   ').prop('checked', true);
+        $('#uav   ').prop('checked', true);
+        $('#jobNum   ').prop('checked', true);
+    });
+
+
+
+</script>
+
+</html>
