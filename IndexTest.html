@@ -10,7 +10,7 @@
     </Link>
     <!-- jquery for handle some functionalities -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <!-- fontAwsome CDN -->
     <script src="https://kit.fontawesome.com/9d8f9d64aa.js" crossorigin="anonymous"></script>
 
@@ -307,22 +307,36 @@
         resetPagination();
     });
 
-    // Function for manipulate the data (dynamically created objectives) into the table
+    // Array to store the checkbox states
+    var checkboxStates = {};
+    
+    //Function for manipulate the data (dynamically created objectives) into the table
     function buildTable(data) {
-        var table = document.getElementById('dataTable')
-        table.innerHTML = ''
-        //Loop for put each data inside to the table
+        var table = document.getElementById('dataTable');
+        table.innerHTML = '';
+
         for (var i = 0; i < data.length; i++) {
-            var row = `<tr> <td><input type="checkbox"> </td>
-							<td>${data[i].organization}</td>
-							<td>${data[i].Code}</td>
-							<td>${data[i].Handler}</td>
-					  </tr>`
-            table.innerHTML += row
+            var checkboxId = `checkbox_${data[i].Code}`;
+            var isChecked = checkboxStates[checkboxId] ? 'checked' : '';
 
-
+            var row = `<tr>
+                        <td><input type="checkbox" id="${checkboxId}" ${isChecked}></td>
+                        <td>${data[i].organization}</td>
+                        <td>${data[i].Code}</td>
+                        <td>${data[i].Handler}</td>
+                    </tr>`;
+            table.innerHTML += row;
         }
+
+        // Add event listeners
+        var checkboxes = table.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                checkboxStates[checkbox.id] = checkbox.checked;
+            });
+        });
     }
+
 
 
     //PAGINATION SECTION
